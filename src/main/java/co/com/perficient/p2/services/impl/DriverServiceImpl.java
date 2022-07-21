@@ -14,7 +14,11 @@ import java.util.List;
 @Service
 public class DriverServiceImpl implements DriverService {
 
-    private DriverRepository driverRepository;
+    private final DriverRepository driverRepository;
+
+    public DriverServiceImpl(DriverRepository driverRepository) {
+        this.driverRepository = driverRepository;
+    }
 
     @Override
     public Driver create(Driver driver) {
