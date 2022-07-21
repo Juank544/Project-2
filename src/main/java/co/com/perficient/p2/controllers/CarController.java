@@ -24,7 +24,7 @@ public class CarController {
 
     @PostMapping
     public ResponseEntity<Car> create(@RequestBody Car car){
-        return ResponseEntity.ok(carService.create(car));
+        return new ResponseEntity<>(carService.create(car),HttpStatus.CREATED);
     }
 
     @GetMapping
@@ -34,7 +34,9 @@ public class CarController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Car> findById(@PathVariable Long id){
-        return ResponseEntity.ok(carService.findById(id));
+        if (carService.findById(id) != null) {
+            return ResponseEntity.ok(carService.findById(id));
+        } return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PutMapping("/{id}")

@@ -24,7 +24,7 @@ public class DriverController {
 
     @PostMapping
     public ResponseEntity<Driver> create(@RequestBody Driver driver){
-        return ResponseEntity.ok(driverService.create(driver));
+        return new ResponseEntity<>(driverService.create(driver),HttpStatus.CREATED);
     }
 
     @GetMapping
@@ -34,7 +34,9 @@ public class DriverController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Driver> findById(@PathVariable Short id){
-        return ResponseEntity.ok(driverService.findById(id));
+        if (driverService.findById(id) != null) {
+            return ResponseEntity.ok(driverService.findById(id));
+        } return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PutMapping("/{id}")

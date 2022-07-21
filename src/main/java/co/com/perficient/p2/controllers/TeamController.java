@@ -24,7 +24,7 @@ public class TeamController {
 
     @PostMapping
     public ResponseEntity<Team> create(@RequestBody Team team){
-        return ResponseEntity.ok(teamService.create(team));
+        return new ResponseEntity<>(teamService.create(team),HttpStatus.CREATED);
     }
 
     @GetMapping
@@ -34,7 +34,9 @@ public class TeamController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Team> findById(@PathVariable Long id){
-        return ResponseEntity.ok(teamService.findById(id));
+        if (teamService.findById(id) != null) {
+            return ResponseEntity.ok(teamService.findById(id));
+        } return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PutMapping("/{id}")
