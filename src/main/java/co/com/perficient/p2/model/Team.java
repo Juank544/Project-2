@@ -1,11 +1,14 @@
 package co.com.perficient.p2.model;
 
 import co.com.perficient.p2.dto.TeamDto;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "teams")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@teamId")
 public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,12 +1,15 @@
 package co.com.perficient.p2.model;
 
 import co.com.perficient.p2.dto.DriverDto;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "drivers")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@driverId")
 public class Driver {
     //numero as id
     @Id
