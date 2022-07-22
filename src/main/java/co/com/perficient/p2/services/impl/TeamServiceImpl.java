@@ -1,5 +1,6 @@
 package co.com.perficient.p2.services.impl;
 
+import co.com.perficient.p2.dto.TeamDto;
 import co.com.perficient.p2.model.Team;
 import co.com.perficient.p2.repository.TeamRepository;
 import co.com.perficient.p2.services.TeamService;
@@ -36,10 +37,9 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public Team update(Team newTeam, Long id) {
+    public Team update(TeamDto newTeam, Long id) {
         Team currentTeam = findById(id);
-        currentTeam.setChief(newTeam.getChief());
-        currentTeam.setName(newTeam.getName());
+        currentTeam.setCar(newTeam.getCar());
         return teamRepository.save(currentTeam);
     }
 

@@ -1,5 +1,7 @@
 package co.com.perficient.p2.model;
 
+import co.com.perficient.p2.dto.TeamDto;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +17,17 @@ public class Team {
     @OneToOne
     @JoinColumn(name = "car_id")
     private Car car;
+
+    public Team() {
+    }
+
+    public Team(Long id, Integer championships, TeamDto teamDto) {
+        this.id = id;
+        this.name = teamDto.getName();
+        this.championships = championships;
+        this.chief = teamDto.getChief();
+        this.car = teamDto.getCar();
+    }
 
     public Long getId() {
         return id;

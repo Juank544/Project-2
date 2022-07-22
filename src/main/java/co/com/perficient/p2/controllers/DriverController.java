@@ -1,5 +1,6 @@
 package co.com.perficient.p2.controllers;
 
+import co.com.perficient.p2.dto.DriverDto;
 import co.com.perficient.p2.model.Driver;
 import co.com.perficient.p2.services.DriverService;
 import org.springframework.http.HttpStatus;
@@ -40,8 +41,8 @@ public class DriverController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Driver> update(@RequestBody Driver driver, @PathVariable Short id){
-        return ResponseEntity.ok(driverService.update(driver,id));
+    public ResponseEntity<Driver> update(@RequestBody DriverDto driverDto, @PathVariable Short id){
+        return ResponseEntity.ok(driverService.update(driverDto,id));
     }
 
     @DeleteMapping("/{id}")

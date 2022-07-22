@@ -1,5 +1,6 @@
 package co.com.perficient.p2.controllers;
 
+import co.com.perficient.p2.dto.TeamDto;
 import co.com.perficient.p2.model.Team;
 import co.com.perficient.p2.services.TeamService;
 import org.springframework.http.HttpStatus;
@@ -40,8 +41,8 @@ public class TeamController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Team> update(@RequestBody Team team, @PathVariable Long id){
-        return ResponseEntity.ok(teamService.update(team, id));
+    public ResponseEntity<Team> update(@RequestBody TeamDto teamDto, @PathVariable Long id){
+        return ResponseEntity.ok(teamService.update(teamDto, id));
     }
 
     @DeleteMapping("/{id}")

@@ -1,5 +1,7 @@
 package co.com.perficient.p2.model;
 
+import co.com.perficient.p2.dto.DriverDto;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -17,6 +19,18 @@ public class Driver {
     @ManyToOne
     @JoinColumn(name = "car_id")
     private Car car;
+
+    public Driver() {
+    }
+
+    public Driver(Short number, String name, Date birth, DriverDto driverDto) {
+        this.number = number;
+        this.name = name;
+        this.birth = birth;
+        this.country = driverDto.getCountry();
+        this.championships = driverDto.getChampionships();
+        this.car = driverDto.getCar();
+    }
 
     public Short getNumber() {
         return number;

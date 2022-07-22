@@ -1,5 +1,7 @@
 package co.com.perficient.p2.model;
 
+import co.com.perficient.p2.dto.CarDto;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,6 +23,16 @@ public class Car {
     @OneToMany
     private Set<Driver> drivers = new HashSet<>();
 
+    public Car() {
+    }
+
+    public Car(Long id, CarDto carDto) {
+        this.id = id;
+        this.name = carDto.getName();
+        this.powerUnit = carDto.getPowerUnit();
+        this.team = carDto.getTeam();
+        this.drivers = carDto.getDrivers();
+    }
 
     public Long getId() {
         return id;

@@ -1,5 +1,6 @@
 package co.com.perficient.p2.controllers;
 
+import co.com.perficient.p2.dto.CarDto;
 import co.com.perficient.p2.model.Car;
 import co.com.perficient.p2.services.CarService;
 import org.springframework.http.HttpStatus;
@@ -40,8 +41,8 @@ public class CarController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Car> update(@RequestBody Car car, @PathVariable Long id){
-        return ResponseEntity.ok(carService.update(car, id));
+    public ResponseEntity<Car> update(@RequestBody CarDto carDto, @PathVariable Long id){
+        return ResponseEntity.ok(carService.update(carDto, id));
     }
 
     @DeleteMapping("/{id}")

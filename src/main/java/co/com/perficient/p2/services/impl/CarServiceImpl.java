@@ -1,5 +1,6 @@
 package co.com.perficient.p2.services.impl;
 
+import co.com.perficient.p2.dto.CarDto;
 import co.com.perficient.p2.model.Car;
 import co.com.perficient.p2.repository.CarRepository;
 import co.com.perficient.p2.services.CarService;
@@ -36,10 +37,10 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Car update(Car newCar, Long id) {
+    public Car update(CarDto newCar, Long id) {
         Car currentCar = findById(id);
-        currentCar.setName(newCar.getName());
-        currentCar.setPowerUnit(newCar.getPowerUnit());
+        currentCar.setTeam(newCar.getTeam());
+        currentCar.setDrivers(newCar.getDrivers());
         return carRepository.save(currentCar);
     }
 

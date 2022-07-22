@@ -1,5 +1,6 @@
 package co.com.perficient.p2.services.impl;
 
+import co.com.perficient.p2.dto.DriverDto;
 import co.com.perficient.p2.model.Driver;
 import co.com.perficient.p2.repository.DriverRepository;
 import co.com.perficient.p2.services.DriverService;
@@ -36,10 +37,9 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public Driver update(Driver newDriver, Short id) {
+    public Driver update(DriverDto newDriver, Short id) {
         Driver currentDriver = findById(id);
         currentDriver.setCar(newDriver.getCar());
-        currentDriver.setChampionships(newDriver.getChampionships());
         return driverRepository.save(currentDriver);
     }
 
