@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class P2Application {
 	//TODO persistencia en SQL(relacional)
 	//TODO endpoint 1.listado de carros, filtrar y ordenar por atributos del carro
-	//TODO hacer endpoint con swagger
+	//TODO hacer endpoint con swagger (http://localhost:8080/swagger-ui/index.html)
 
 
 	public static void main(String[] args) {
