@@ -5,12 +5,11 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "cars")
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@carId")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Car {
     //filtrar los 3 primeros
     @Id
@@ -19,12 +18,11 @@ public class Car {
     private String name;
     private String powerUnit;
 
-    @OneToOne
-    @JoinColumn(name = "team_id")
+    @OneToOne(fetch = FetchType.EAGER)
     private Team team;
 
-    @OneToMany
-    private Set<Driver> drivers = new HashSet<>();
+    @OneToMany(mappedBy = "car")
+    private List<Driver> drivers;
 
     public Car() {
     }
@@ -69,11 +67,19 @@ public class Car {
         this.team = team;
     }
 
-    public Set<Driver> getDrivers() {
+    public List<Driver> getDrivers() {
         return drivers;
     }
 
-    public void setDrivers(Set<Driver> drivers) {
+    public void setDrivers(List<Driver> drivers) {
         this.drivers = drivers;
+    }
+
+    public void addDriver(Driver driver){
+        this.drivers.add(driver);
+    }
+
+    public void removeDriver(Driver driver){
+        this.drivers.remove(driver);
     }
 }

@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "teams")
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@teamId")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,17 +17,16 @@ public class Team {
     private Integer championships;
     private String chief;
 
-    @OneToOne
-    @JoinColumn(name = "car_id")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "team")
     private Car car;
 
     public Team() {
     }
 
-    public Team(Long id, Integer championships, TeamDto teamDto) {
+    public Team(Long id, TeamDto teamDto) {
         this.id = id;
         this.name = teamDto.getName();
-        this.championships = championships;
+        this.championships = teamDto.getChampionships();
         this.chief = teamDto.getChief();
         this.car = teamDto.getCar();
     }

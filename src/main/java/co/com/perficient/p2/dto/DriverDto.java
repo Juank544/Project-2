@@ -3,6 +3,7 @@ package co.com.perficient.p2.dto;
 import co.com.perficient.p2.model.Car;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * @author : Juank544
@@ -10,6 +11,8 @@ import java.io.Serializable;
  **/
 public class DriverDto implements Serializable {
 
+    private String name;
+    private LocalDate birth;
     private String country;
     private Integer championships;
     private Car car;
@@ -17,10 +20,28 @@ public class DriverDto implements Serializable {
     public DriverDto() {
     }
 
-    public DriverDto(String country, Integer championships, Car car) {
+    public DriverDto(String name, LocalDate birth, String country, Integer championships, Car car) {
+        this.name = name;
+        this.birth = birth;
         this.country = country;
         this.championships = championships;
         this.car = car;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDate getBirth() {
+        return birth;
+    }
+
+    public void setBirth(LocalDate birth) {
+        this.birth = birth;
     }
 
     public String getCountry() {

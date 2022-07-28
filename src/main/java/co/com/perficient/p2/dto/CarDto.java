@@ -4,7 +4,7 @@ import co.com.perficient.p2.model.Driver;
 import co.com.perficient.p2.model.Team;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 /**
  * @author : Juank544
@@ -15,12 +15,12 @@ public class CarDto implements Serializable {
     private String name;
     private String powerUnit;
     private Team team;
-    private Set<Driver> drivers;
+    private List<Driver> drivers;
 
     public CarDto() {
     }
 
-    public CarDto(String name, String powerUnit, Team team, Set<Driver> drivers) {
+    public CarDto(String name, String powerUnit, Team team, List<Driver> drivers) {
         this.name = name;
         this.powerUnit = powerUnit;
         this.team = team;
@@ -51,11 +51,19 @@ public class CarDto implements Serializable {
         this.team = team;
     }
 
-    public Set<Driver> getDrivers() {
+    public List<Driver> getDrivers() {
         return drivers;
     }
 
-    public void setDrivers(Set<Driver> drivers) {
+    public void setDrivers(List<Driver> drivers) {
         this.drivers = drivers;
+    }
+
+    public void addDriver(Driver driver){
+        this.drivers.add(driver);
+    }
+
+    public void removeDriver(Driver driver){
+        this.drivers.remove(driver);
     }
 }

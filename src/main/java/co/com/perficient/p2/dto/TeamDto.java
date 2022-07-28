@@ -11,14 +11,16 @@ import java.io.Serializable;
 public class TeamDto implements Serializable {
 
     private String name;
+    private Integer championships;
     private String chief;
     private Car car;
 
     public TeamDto() {
     }
 
-    public TeamDto(String name,String chief, Car car) {
+    public TeamDto(String name, Integer championships, String chief, Car car) {
         this.name = name;
+        this.championships = championships;
         this.chief = chief;
         this.car = car;
     }
@@ -29,6 +31,14 @@ public class TeamDto implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getChampionships() {
+        return championships;
+    }
+
+    public void setChampionships(Integer championships) {
+        this.championships = championships;
     }
 
     public String getChief() {
