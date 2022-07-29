@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -57,5 +59,13 @@ public class DriverController {
             return ResponseEntity.ok(driverService.findByName(name));
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/years/{y1}/{y2}")
+    public ResponseEntity<List<Driver>> findByRangeDates(@PathVariable String y1, @PathVariable String y2){
+        //TODO fix formato fecha
+        LocalDate.parse(y1, DateTimeFormatter.BASIC_ISO_DATE);
+        LocalDate.parse(y2, DateTimeFormatter.BASIC_ISO_DATE);
+        return ResponseEntity.ok(driverService.findBetweenDates(y1, y2));
     }
 }

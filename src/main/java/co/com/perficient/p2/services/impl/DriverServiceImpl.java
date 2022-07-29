@@ -52,4 +52,9 @@ public class DriverServiceImpl implements DriverService {
     public Driver findByName(String name) {
         return driverRepository.findDriverByNameContains(name);
     }
+
+    @Override
+    public List<Driver> findBetweenDates(String date1, String date2) {
+        return driverRepository.findByBirthBetween(date1, date2);
+    }
 }
