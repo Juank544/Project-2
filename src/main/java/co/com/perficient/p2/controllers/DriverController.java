@@ -50,4 +50,12 @@ public class DriverController {
         driverService.delete(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
+
+    @GetMapping("/name/{name}")
+    public ResponseEntity<Driver> findByName(@PathVariable String name){
+        if (driverService.findByName(name) != null){
+            return ResponseEntity.ok(driverService.findByName(name));
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 }
