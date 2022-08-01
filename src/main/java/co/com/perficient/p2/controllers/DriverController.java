@@ -63,9 +63,9 @@ public class DriverController {
 
     @GetMapping("/years/{y1}/{y2}")
     public ResponseEntity<List<Driver>> findByRangeDates(@PathVariable String y1, @PathVariable String y2){
-        //TODO fix formato fecha
-        LocalDate.parse(y1, DateTimeFormatter.BASIC_ISO_DATE);
-        LocalDate.parse(y2, DateTimeFormatter.BASIC_ISO_DATE);
-        return ResponseEntity.ok(driverService.findBetweenDates(y1, y2));
+        //TODO usar solo el año
+        LocalDate y1Converted = LocalDate.parse(y1, DateTimeFormatter.ISO_LOCAL_DATE);
+        LocalDate y2Converted = LocalDate.parse(y2, DateTimeFormatter.ISO_LOCAL_DATE);
+        return ResponseEntity.ok(driverService.findBetweenDates(y1Converted, y2Converted));
     }
 }

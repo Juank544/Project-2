@@ -6,6 +6,7 @@ import co.com.perficient.p2.repository.DriverRepository;
 import co.com.perficient.p2.services.DriverService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -54,7 +55,7 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public List<Driver> findBetweenDates(String date1, String date2) {
+    public List<Driver> findBetweenDates(LocalDate date1, LocalDate date2) {
         return driverRepository.findByBirthBetween(date1, date2);
     }
 }
