@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -63,9 +62,8 @@ public class DriverController {
 
     @GetMapping("/years/{y1}/{y2}")
     public ResponseEntity<List<Driver>> findByRangeDates(@PathVariable String y1, @PathVariable String y2){
-        //TODO usar solo el año
-        LocalDate y1Converted = LocalDate.parse(y1, DateTimeFormatter.ISO_LOCAL_DATE);
-        LocalDate y2Converted = LocalDate.parse(y2, DateTimeFormatter.ISO_LOCAL_DATE);
+        LocalDate y1Converted = LocalDate.of(Integer.parseInt(y1),1,1);
+        LocalDate y2Converted = LocalDate.of(Integer.parseInt(y2),1,1);
         return ResponseEntity.ok(driverService.findBetweenDates(y1Converted, y2Converted));
     }
 }
