@@ -54,8 +54,9 @@ public class DriverController {
 
     @GetMapping("/name/{name}")
     public ResponseEntity<Driver> findByName(@PathVariable String name){
-        if (driverService.findByName(name) != null){
-            return ResponseEntity.ok(driverService.findByName(name));
+        String nameLC = name.toLowerCase();
+        if (driverService.findByName(nameLC) != null){
+            return ResponseEntity.ok(driverService.findByName(nameLC));
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
