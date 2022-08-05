@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface DriverService extends CrudService<Driver, DriverDto, Short> {
     Driver findByName(String name);
-    List<Driver> findBetweenDates(LocalDate date1, LocalDate date2);
+    List<Driver> findBetweenDates(LocalDate dateFrom, LocalDate dateUntil);
 }

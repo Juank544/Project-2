@@ -60,10 +60,10 @@ public class DriverController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/years/{y1}/{y2}")
-    public ResponseEntity<List<Driver>> findByRangeDates(@PathVariable String y1, @PathVariable String y2){
-        LocalDate y1Converted = LocalDate.of(Integer.parseInt(y1),1,1);
-        LocalDate y2Converted = LocalDate.of(Integer.parseInt(y2),1,1);
-        return ResponseEntity.ok(driverService.findBetweenDates(y1Converted, y2Converted));
+    @GetMapping("/years/{yearFrom}/{yearUntil}")
+    public ResponseEntity<List<Driver>> findByRangeYears(@PathVariable String yearFrom, @PathVariable String yearUntil){
+        LocalDate dateFrom = LocalDate.of(Integer.parseInt(yearFrom),1,1);
+        LocalDate dateUntil = LocalDate.of(Integer.parseInt(yearUntil),12,31);
+        return ResponseEntity.ok(driverService.findBetweenDates(dateFrom, dateUntil));
     }
 }

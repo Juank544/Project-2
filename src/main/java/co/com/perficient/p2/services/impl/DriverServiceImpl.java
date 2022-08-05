@@ -55,7 +55,7 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public List<Driver> findBetweenDates(LocalDate date1, LocalDate date2) {
-        return driverRepository.findByBirthBetween(date1, date2);
+    public List<Driver> findBetweenDates(LocalDate dateFrom, LocalDate dateUntil) {
+        return driverRepository.findByBirthBetween(dateFrom, dateUntil);
     }
 }

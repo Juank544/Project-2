@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface DriverRepository extends JpaRepository<Driver,Short> {
     Driver findDriverByNameContains(String name);
-    List<Driver> findByBirthBetween(LocalDate date1, LocalDate date2);
+    List<Driver> findByBirthBetween(LocalDate dateFrom, LocalDate dateUntil);
 }
