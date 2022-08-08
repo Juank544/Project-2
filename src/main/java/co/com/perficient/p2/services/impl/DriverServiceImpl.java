@@ -51,7 +51,7 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public Driver findByName(String name) {
-        return driverRepository.findDriverByName(name);
+        return driverRepository.findByName(name);
     }
 
     @Override
