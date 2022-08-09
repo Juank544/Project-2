@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface DriverRepository extends JpaRepository<Driver,Short> {
 
-    @Query("SELECT d FROM Driver d WHERE lower(d.name) LIKE %:name%")
+    @Query("SELECT d FROM Driver d WHERE lower(d.name) LIKE concat('%', concat(lower(:name), '%'))")
     Driver findByName(@Param("name") String name);
     List<Driver> findByBirthBetween(LocalDate dateFrom, LocalDate dateUntil);
 }
