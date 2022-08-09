@@ -5,3 +5,6 @@
 
 ## Diagrama de clases
 ![](/img/diagram.png)
+
+## Diagrama de Componentes
+![](/img/Component_Diagram0.png)
