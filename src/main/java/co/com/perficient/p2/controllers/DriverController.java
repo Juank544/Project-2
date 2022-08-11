@@ -36,9 +36,7 @@ public class DriverController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Driver> findById(@PathVariable Short id){
-        if (driverService.findById(id) != null) {
-            return ResponseEntity.ok(driverService.findById(id));
-        } return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return ResponseEntity.ok(driverService.findById(id));
     }
 
     @PutMapping("/{id}")
@@ -49,15 +47,12 @@ public class DriverController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Short id){
         driverService.delete(id);
-        return ResponseEntity.ok(HttpStatus.OK);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/name/{name}")
     public ResponseEntity<Driver> findByName(@PathVariable String name){
-        if (driverService.findByName(name) != null){
-            return ResponseEntity.ok(driverService.findByName(name));
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return ResponseEntity.ok(driverService.findByName(name));
     }
 
     @GetMapping("/years/{yearFrom}/{yearUntil}")

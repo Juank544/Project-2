@@ -22,7 +22,7 @@ public class RestResponseEntityExceptionHandler {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<String> errorCreating(HttpMessageNotReadableException e){
-        logger.error("CONSOLE-Required request body is missing: "+e.getMessage());
+        logger.error("CONSOLE-"+e.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("CLIENT-Required request body is missing");
     }
 

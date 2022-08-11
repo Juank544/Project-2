@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * @author : Juank544
@@ -34,7 +35,8 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public Driver findById(Short id) {
-        return driverRepository.findById(id).isPresent() ? driverRepository.findById(id).get() : null;
+        return driverRepository.findById(id)
+                .orElseThrow(NoSuchElementException::new);
     }
 
     @Override
@@ -51,11 +53,17 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public Driver findByName(String name) {
-        return driverRepository.findByName(name);
+        Driver driver = driverRepository.findByName(name);
+        if (driver == null){
+            throw new NoSuchElementException();
+        } return driver;
     }
 
     @Override
     public List<Driver> findBetweenDates(LocalDate dateFrom, LocalDate dateUntil) {
-        return driverRepository.findByBirthBetween(dateFrom, dateUntil);
+        List<Driver> drivers = driverRepository.findByBirthBetween(dateFrom, dateUntil);
+        if (drivers.isEmpty()){
+            throw new NoSuchElementException();
+        } return drivers;
     }
 }
