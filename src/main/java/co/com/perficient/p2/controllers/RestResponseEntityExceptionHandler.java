@@ -22,25 +22,25 @@ public class RestResponseEntityExceptionHandler {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<String> errorCreating(HttpMessageNotReadableException e){
-        logger.error("CONSOLE-"+e.getMessage());
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("CLIENT-Required request body is missing");
+        logger.error(e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Required request body is missing");
     }
 
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<String> notFound(NoSuchElementException e){
-        logger.error("CONSOLE-No value present: "+e.getMessage());
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("CLIENT-No value present");
+        logger.error(e.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No value present");
     }
 
     @ExceptionHandler(EmptyResultDataAccessException.class)
     public ResponseEntity<String> errorDeleting(EmptyResultDataAccessException e){
-        logger.error("CONSOLE-No entity exists with the id provided: "+e.getMessage());
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("CLIENT-No entity exists with the id provided");
+        logger.error(e.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("No entity exists with the id provided");
     }
 
     @ExceptionHandler(Throwable.class)
     public ResponseEntity<String> internalError(Throwable throwable){
-        logger.error("CONSOLE-Error on the application: "+throwable.getMessage());
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("CLIENT-Error on the application");
+        logger.error(throwable.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error on the application");
     }
 }
