@@ -21,26 +21,26 @@ public class RestResponseEntityExceptionHandler {
     private final Logger logger = LoggerFactory.getLogger(RestResponseEntityExceptionHandler.class);
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<String> errorCreating(){
-        logger.error("Required request body is missing-CONSOLE");
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Required request body is missing-CLIENT");
+    public ResponseEntity<String> errorCreating(HttpMessageNotReadableException e){
+        logger.error("CONSOLE-Required request body is missing: "+e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("CLIENT-Required request body is missing");
     }
 
     @ExceptionHandler(NoSuchElementException.class)
-    public ResponseEntity<String> notFound(){
-        logger.error("No value present-CONSOLE");
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No value present-CLIENT");
+    public ResponseEntity<String> notFound(NoSuchElementException e){
+        logger.error("CONSOLE-No value present: "+e.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("CLIENT-No value present");
     }
 
     @ExceptionHandler(EmptyResultDataAccessException.class)
     public ResponseEntity<String> errorDeleting(EmptyResultDataAccessException e){
-        logger.error("No entity exists with the id provided-CONSOLE");
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("No entity exists with the id provided-CLIENT");
+        logger.error("CONSOLE-No entity exists with the id provided: "+e.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("CLIENT-No entity exists with the id provided");
     }
 
     @ExceptionHandler(Throwable.class)
-    public ResponseEntity<String> internalError(){
-        logger.error("Error on the application-CONSOLE");
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error on the application-CLIENT");
+    public ResponseEntity<String> internalError(Throwable throwable){
+        logger.error("CONSOLE-Error on the application: "+throwable.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("CLIENT-Error on the application");
     }
 }
