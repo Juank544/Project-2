@@ -35,9 +35,7 @@ public class TeamController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Team> findById(@PathVariable Long id){
-        if (teamService.findById(id) != null) {
-            return ResponseEntity.ok(teamService.findById(id));
-        } return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return ResponseEntity.ok(teamService.findById(id));
     }
 
     @PutMapping("/{id}")
@@ -48,6 +46,6 @@ public class TeamController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         teamService.delete(id);
-        return ResponseEntity.ok(HttpStatus.OK);
+        return ResponseEntity.ok().build();
     }
 }

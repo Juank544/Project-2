@@ -35,9 +35,7 @@ public class CarController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Car> findById(@PathVariable Long id){
-        if (carService.findById(id) != null) {
-            return ResponseEntity.ok(carService.findById(id));
-        } return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return ResponseEntity.ok(carService.findById(id));
     }
 
     @PutMapping("/{id}")
@@ -48,6 +46,6 @@ public class CarController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         carService.delete(id);
-        return ResponseEntity.ok(HttpStatus.OK);
+        return ResponseEntity.ok().build();
     }
 }

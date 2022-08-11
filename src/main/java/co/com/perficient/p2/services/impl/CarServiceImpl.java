@@ -7,6 +7,7 @@ import co.com.perficient.p2.services.CarService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * @author : Juank544
@@ -33,7 +34,8 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public Car findById(Long id) {
-        return carRepository.findById(id).isPresent() ? carRepository.findById(id).get() : null;
+        return carRepository.findById(id)
+                .orElseThrow(NoSuchElementException::new);
     }
 
     @Override

@@ -7,6 +7,7 @@ import co.com.perficient.p2.services.TeamService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * @author : Juank544
@@ -33,7 +34,8 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public Team findById(Long id) {
-        return teamRepository.findById(id).isPresent() ? teamRepository.findById(id).get() : null;
+        return teamRepository.findById(id)
+                .orElseThrow(NoSuchElementException::new);
     }
 
     @Override
