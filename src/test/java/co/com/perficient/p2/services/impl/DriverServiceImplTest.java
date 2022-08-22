@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.time.LocalDate;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,15 +25,12 @@ class DriverServiceImplTest {
     @Autowired
     private DriverServiceImpl driverService;
 
-    //TODO fix it
-    /*@Test
-    void findByIdNotFound(){
-
+    @Test
+    void findByIdNotSuccess(){
         when(driverRepository.findById(anyShort())).thenReturn(Optional.empty());
-
-        assertThrows(RuntimeException.class, () ->
+        assertThrows(NoSuchElementException.class, () ->
                 driverService.findById((short) 44));
-    }*/
+    }
 
     @Test
     void findByIdSuccess() {
@@ -40,11 +38,8 @@ class DriverServiceImplTest {
 
         when(driverRepository.findById(anyShort())).thenReturn(Optional.of(driver));
 
-        Driver driverFound = driverService.findById((short) 44);
+        Driver driverFound = assertDoesNotThrow(() ->
+                driverService.findById((short) 44));
         assertEquals(driver,driverFound);
-    }
-
-    @Test
-    void update() {
     }
 }
