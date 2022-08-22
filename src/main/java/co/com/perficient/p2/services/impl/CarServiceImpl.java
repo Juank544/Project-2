@@ -1,7 +1,7 @@
 package co.com.perficient.p2.services.impl;
 
 import co.com.perficient.p2.dto.CarDto;
-import co.com.perficient.p2.model.Car;
+import co.com.perficient.p2.entities.Car;
 import co.com.perficient.p2.repository.CarRepository;
 import co.com.perficient.p2.services.CarService;
 import org.springframework.stereotype.Service;

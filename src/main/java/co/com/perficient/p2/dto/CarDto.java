@@ -1,7 +1,7 @@
 package co.com.perficient.p2.dto;
 
-import co.com.perficient.p2.model.Driver;
-import co.com.perficient.p2.model.Team;
+import co.com.perficient.p2.entities.Driver;
+import co.com.perficient.p2.entities.Team;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

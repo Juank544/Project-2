@@ -1,4 +1,4 @@
-package co.com.perficient.p2.model;
+package co.com.perficient.p2.entities;
 
 import co.com.perficient.p2.dto.DriverDto;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;

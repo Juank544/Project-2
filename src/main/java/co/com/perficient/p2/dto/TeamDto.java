@@ -1,6 +1,6 @@
 package co.com.perficient.p2.dto;
 
-import co.com.perficient.p2.model.Car;
+import co.com.perficient.p2.entities.Car;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

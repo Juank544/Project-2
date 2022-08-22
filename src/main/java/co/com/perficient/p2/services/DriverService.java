@@ -1,7 +1,7 @@
 package co.com.perficient.p2.services;
 
 import co.com.perficient.p2.dto.DriverDto;
-import co.com.perficient.p2.model.Driver;
+import co.com.perficient.p2.entities.Driver;
 
 import java.time.LocalDate;
 import java.util.List;

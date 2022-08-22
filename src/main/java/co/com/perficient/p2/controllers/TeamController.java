@@ -1,7 +1,7 @@
 package co.com.perficient.p2.controllers;
 
 import co.com.perficient.p2.dto.TeamDto;
-import co.com.perficient.p2.model.Team;
+import co.com.perficient.p2.entities.Team;
 import co.com.perficient.p2.services.TeamService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
