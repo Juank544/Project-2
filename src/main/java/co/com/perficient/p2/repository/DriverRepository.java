@@ -1,6 +1,6 @@
 package co.com.perficient.p2.repository;
 
-import co.com.perficient.p2.entities.Driver;
+import co.com.perficient.p2.model.entities.Driver;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

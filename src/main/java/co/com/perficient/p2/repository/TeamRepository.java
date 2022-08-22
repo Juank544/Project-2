@@ -1,6 +1,6 @@
 package co.com.perficient.p2.repository;
 
-import co.com.perficient.p2.entities.Team;
+import co.com.perficient.p2.model.entities.Team;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

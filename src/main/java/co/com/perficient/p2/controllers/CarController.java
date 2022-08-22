@@ -1,7 +1,7 @@
 package co.com.perficient.p2.controllers;
 
-import co.com.perficient.p2.dto.CarDto;
-import co.com.perficient.p2.entities.Car;
+import co.com.perficient.p2.model.dto.CarDto;
+import co.com.perficient.p2.model.entities.Car;
 import co.com.perficient.p2.services.CarService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

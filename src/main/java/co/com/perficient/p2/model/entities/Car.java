@@ -1,6 +1,6 @@
-package co.com.perficient.p2.entities;
+package co.com.perficient.p2.model.entities;
 
-import co.com.perficient.p2.dto.CarDto;
+import co.com.perficient.p2.model.dto.CarDto;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
