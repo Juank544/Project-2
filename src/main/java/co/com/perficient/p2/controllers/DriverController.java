@@ -1,8 +1,8 @@
 package co.com.perficient.p2.controllers;
 
 import co.com.perficient.p2.model.dto.DriverDto;
-import co.com.perficient.p2.model.entities.Driver;
 import co.com.perficient.p2.services.DriverService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +18,7 @@ import java.util.List;
 @RequestMapping("/drivers")
 public class DriverController {
 
+    @Autowired
     private final DriverService driverService;
 
     public DriverController(DriverService driverService) {
@@ -25,22 +26,22 @@ public class DriverController {
     }
 
     @PostMapping
-    public ResponseEntity<Driver> create(@RequestBody Driver driver){
-        return new ResponseEntity<>(driverService.create(driver),HttpStatus.CREATED);
+    public ResponseEntity<DriverDto> create(@RequestBody DriverDto driverDto){
+        return new ResponseEntity<>(driverService.create(driverDto),HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<List<Driver>> findAll(){
+    public ResponseEntity<List<DriverDto>> findAll(){
         return ResponseEntity.ok(driverService.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Driver> findById(@PathVariable Short id){
+    public ResponseEntity<DriverDto> findById(@PathVariable Short id){
         return ResponseEntity.ok(driverService.findById(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Driver> update(@RequestBody DriverDto driverDto, @PathVariable Short id){
+    public ResponseEntity<DriverDto> update(@RequestBody DriverDto driverDto, @PathVariable Short id){
         return ResponseEntity.ok(driverService.update(driverDto,id));
     }
 
@@ -51,12 +52,12 @@ public class DriverController {
     }
 
     @GetMapping("/name/{name}")
-    public ResponseEntity<Driver> findByName(@PathVariable String name){
+    public ResponseEntity<DriverDto> findByName(@PathVariable String name){
         return ResponseEntity.ok(driverService.findByName(name));
     }
 
     @GetMapping("/years/{yearFrom}/{yearUntil}")
-    public ResponseEntity<List<Driver>> findByRangeYears(@PathVariable String yearFrom, @PathVariable String yearUntil){
+    public ResponseEntity<List<DriverDto>> findByRangeYears(@PathVariable String yearFrom, @PathVariable String yearUntil){
         LocalDate dateFrom = LocalDate.of(Integer.parseInt(yearFrom),1,1);
         LocalDate dateUntil = LocalDate.of(Integer.parseInt(yearUntil),12,31);
         return ResponseEntity.ok(driverService.findBetweenDates(dateFrom, dateUntil));

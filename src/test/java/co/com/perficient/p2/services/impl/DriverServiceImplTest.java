@@ -1,7 +1,7 @@
 package co.com.perficient.p2.services.impl;
 
-import co.com.perficient.p2.dto.DriverDto;
-import co.com.perficient.p2.entities.Driver;
+import co.com.perficient.p2.model.entities.Driver;
+import co.com.perficient.p2.model.mappers.DriverMapper;
 import co.com.perficient.p2.repository.DriverRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +25,9 @@ class DriverServiceImplTest {
     @Autowired
     private DriverServiceImpl driverService;
 
+    @Autowired
+    private DriverMapper mapper;
+
     @Test
     void findByIdNotSuccess(){
         when(driverRepository.findById(anyShort())).thenReturn(Optional.empty());
@@ -33,13 +36,14 @@ class DriverServiceImplTest {
     }
 
     @Test
+    //TODO revisar el equals
     void findByIdSuccess() {
-        var driver =new Driver((short) 44, new DriverDto("Lewis Hamilton", LocalDate.of(1985,1,6),"United Kingdom",7,null));
+        var driver = new Driver((short) 44,"Lewis Hamilton", LocalDate.of(1985,1,6),"United Kingdom",7,null);
 
         when(driverRepository.findById(anyShort())).thenReturn(Optional.of(driver));
 
-        Driver driverFound = assertDoesNotThrow(() ->
+        var driverFound = assertDoesNotThrow(() ->
                 driverService.findById((short) 44));
-        assertEquals(driver,driverFound);
+        assertEquals(mapper.mapDriver(driver),driverFound);
     }
 }

@@ -2,7 +2,10 @@ package co.com.perficient.p2.model.entities;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,7 +16,6 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "drivers")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "number")
-@Builder
 @NoArgsConstructor @AllArgsConstructor
 @Getter @Setter
 public class Driver {
@@ -27,13 +29,4 @@ public class Driver {
 
     @ManyToOne
     private Car car;
-
-/*    public Driver(Short number, DriverDto driverDto) {
-        this.number = number;
-        this.name = driverDto.getName();
-        this.birth = driverDto.getBirth();
-        this.country = driverDto.getCountry();
-        this.championships = driverDto.getChampionships();
-        this.car = driverDto.getCar();
-    }*/
 }

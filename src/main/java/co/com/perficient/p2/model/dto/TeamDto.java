@@ -16,6 +16,7 @@ import java.io.Serializable;
 @Getter @Setter
 public class TeamDto implements Serializable {
 
+    private Long id;
     private String name;
     private Integer championships;
     private String chief;

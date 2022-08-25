@@ -1,8 +1,8 @@
 package co.com.perficient.p2.controllers;
 
 import co.com.perficient.p2.model.dto.TeamDto;
-import co.com.perficient.p2.model.entities.Team;
 import co.com.perficient.p2.services.TeamService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +17,7 @@ import java.util.List;
 @RequestMapping("/teams")
 public class TeamController {
 
+    @Autowired
     private final TeamService teamService;
 
     public TeamController(TeamService teamService) {
@@ -24,22 +25,22 @@ public class TeamController {
     }
 
     @PostMapping
-    public ResponseEntity<Team> create(@RequestBody Team team){
-        return new ResponseEntity<>(teamService.create(team),HttpStatus.CREATED);
+    public ResponseEntity<TeamDto> create(@RequestBody TeamDto teamDto){
+        return new ResponseEntity<>(teamService.create(teamDto),HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<List<Team>> findAll(){
+    public ResponseEntity<List<TeamDto>> findAll(){
         return ResponseEntity.ok(teamService.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Team> findById(@PathVariable Long id){
+    public ResponseEntity<TeamDto> findById(@PathVariable Long id){
         return ResponseEntity.ok(teamService.findById(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Team> update(@RequestBody TeamDto teamDto, @PathVariable Long id){
+    public ResponseEntity<TeamDto> update(@RequestBody TeamDto teamDto, @PathVariable Long id){
         return ResponseEntity.ok(teamService.update(teamDto, id));
     }
 

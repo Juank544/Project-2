@@ -18,6 +18,7 @@ import java.util.List;
 @Getter @Setter
 public class CarDto implements Serializable {
 
+    private Long id;
     private String name;
     private String powerUnit;
     private Team team;

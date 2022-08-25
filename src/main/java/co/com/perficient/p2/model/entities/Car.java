@@ -1,8 +1,8 @@
 package co.com.perficient.p2.model.entities;
 
-import co.com.perficient.p2.model.dto.CarDto;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 @Table(name = "cars")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-@NoArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
 @Getter @Setter
 public class Car {
 
@@ -28,12 +28,4 @@ public class Car {
 
     @OneToMany(mappedBy = "car")
     private List<Driver> drivers;
-
-    public Car(Long id, CarDto carDto) {
-        this.id = id;
-        this.name = carDto.getName();
-        this.powerUnit = carDto.getPowerUnit();
-        this.team = carDto.getTeam();
-        this.drivers = carDto.getDrivers();
-    }
 }
